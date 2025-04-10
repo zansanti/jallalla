@@ -1,0 +1,46 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #f8f8f8;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 20px;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 15px;
+}
+
+main {
+    padding: 20px;
+}
+
+#galeria {
+    border: 2px solid purple;
+    padding: 10px;
+}
+
+footer {
+    background-color: orange;
+    text-align: center;
+    padding: 10px;
+}
+.flex {
+    display: flex;
+    flex-direction: row; /* Disposição horizontal (padrão, mas é bom especificar) */
+    gap: 16px; /* Espaço entre os itens (opcional) */
+    flex-wrap: wrap; /* Permite quebra de linha se não couber */
+    align-items: center; /* Alinha verticalmente (opcional) */
+}
