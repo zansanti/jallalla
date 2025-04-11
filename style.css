@@ -44,3 +44,12 @@ footer {
     flex-wrap: wrap; /* Permite quebra de linha se não couber */
     align-items: center; /* Alinha verticalmente (opcional) */
 }
+header img {
+    max-width: 150px; /* Ajuste conforme necessário */
+    height: auto;
+}
+
+footer img {
+    max-width: 100px; /* Tamanho menor para o footer */
+    height: auto;
+}
