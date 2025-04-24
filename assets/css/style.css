@@ -31,6 +31,10 @@ main {
     padding: 10px;
 }
 
+#descricao p {
+    text-align: center; /* Centraliza o texto */
+}
+
 footer {
     background-color: orange;
     text-align: center;
