@@ -3,19 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <title>Redirecionamento</title>
-  <script>
-    // Redireciona com base no idioma do navegador
-    const userLang = navigator.language || navigator.userLanguage;
-    if (userLang.startsWith('es')) {
-      window.location.href = '/esp/';
-    } else if (userLang.startsWith('pt')) {
-      window.location.href = '/pt/';
-    } else {
-      window.location.href = '/eng/'; // Default para inglês
-    }
-  </script>
+  <!-- CSS para esconder a página até o JS executar -->
+  <style>
+    body { opacity: 0; }
+  </style>
+  <!-- Script com prioridade máxima (sem defer/async) -->
+  <script src="assets/js/redirect.js"></script>
 </head>
 <body>
+  <!-- Fallback para caso o JS falhe -->
   <p>Se você não for redirecionado, <a href="/pt/">clique aqui</a></p>
+  
+  <!-- Mostra a página se o JS não redirecionou em 50ms -->
+  <script>
+    setTimeout(() => { document.body.style.opacity = 1; }, 50);
+  </script>
 </body>
 </html>
