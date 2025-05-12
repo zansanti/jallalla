@@ -65,17 +65,17 @@ document.addEventListener('DOMContentLoaded', function() {
   document.addEventListener('DOMContentLoaded', function() {
   const gallery = {
     images: [
-      '../assets/imagens/galeria-principal/1.jpg',
-      '../assets/imagens/galeria-principal/2.jpg',
-      '../assets/imagens/galeria-principal/3.jpg',
-      '../assets/imagens/galeria-principal/4.jpg',
-      '../assets/imagens/galeria-principal/5.jpg',
-      '../assets/imagens/galeria-principal/6.jpg',
-      '../assets/imagens/galeria-principal/7.jpg',
-      '../assets/imagens/galeria-principal/8.jpg',
-      '../assets/imagens/galeria-principal/9.jpg',
-      '../assets/imagens/galeria-principal/10.jpg',
-      '../assets/imagens/galeria-principal/11.jpg'
+      '../assets/imagens/galeria-principal/galeria-1.jpg',
+      '../assets/imagens/galeria-principal/galeria-2.jpg',
+      '../assets/imagens/galeria-principal/galeria-3.jpg',
+      '../assets/imagens/galeria-principal/galeria-4.jpg',
+      '../assets/imagens/galeria-principal/galeria-5.jpg',
+      '../assets/imagens/galeria-principal/galeria-6.jpg',
+      '../assets/imagens/galeria-principal/galeria-7.jpg',
+      '../assets/imagens/galeria-principal/galeria-8.jpg',
+      '../assets/imagens/galeria-principal/galeria-9.jpg',
+      '../assets/imagens/galeria-principal/galeria-10.jpg',
+      '../assets/imagens/galeria-principal/galeria-11.jpg'
     ],
     currentIndex: 0,
     init: function() {
