@@ -61,3 +61,77 @@ document.addEventListener('DOMContentLoaded', function() {
     // Caso o header seja carregado via fetch, tente novamente após 500ms
     setTimeout(setupLanguageSwitcher, 500);
   });
+
+  document.addEventListener('DOMContentLoaded', function() {
+  const gallery = {
+    images: [
+      '../assets/imagens/galeria-principal/1.jpg',
+      '../assets/imagens/galeria-principal/2.jpg',
+      '../assets/imagens/galeria-principal/3.jpg',
+      '../assets/imagens/galeria-principal/4.jpg',
+      '../assets/imagens/galeria-principal/5.jpg',
+      '../assets/imagens/galeria-principal/6.jpg',
+      '../assets/imagens/galeria-principal/7.jpg',
+      '../assets/imagens/galeria-principal/8.jpg',
+      '../assets/imagens/galeria-principal/9.jpg',
+      '../assets/imagens/galeria-principal/10.jpg',
+      '../assets/imagens/galeria-principal/11.jpg'
+    ],
+    currentIndex: 0,
+    init: function() {
+      this.renderImages();
+      this.renderDots();
+      this.setupEventListeners();
+    },
+    renderImages: function() {
+      const container = document.querySelector('.gallery-images');
+      container.innerHTML = this.images.map(img => 
+        `<img src="${img}" alt="Imagem da galeria">`
+      ).join('');
+    },
+    renderDots: function() {
+      const dotsContainer = document.querySelector('.gallery-dots');
+      dotsContainer.innerHTML = this.images.map((_, index) => 
+        `<div class="gallery-dot ${index === 0 ? 'active' : ''}" data-index="${index}"></div>`
+      ).join('');
+    },
+    setupEventListeners: function() {
+      // Botões de navegação
+      document.querySelector('.gallery-prev').addEventListener('click', () => {
+        this.navigate(-1);
+      });
+      document.querySelector('.gallery-next').addEventListener('click', () => {
+        this.navigate(1);
+      });
+      
+      // Pontos de navegação
+      document.querySelectorAll('.gallery-dot').forEach(dot => {
+        dot.addEventListener('click', () => {
+          this.goTo(parseInt(dot.dataset.index));
+        });
+      });
+    },
+    navigate: function(direction) {
+      this.currentIndex = (this.currentIndex + direction + this.images.length) % this.images.length;
+      this.updateGallery();
+    },
+    goTo: function(index) {
+      this.currentIndex = index;
+      this.updateGallery();
+    },
+    updateGallery: function() {
+      const galleryImages = document.querySelector('.gallery-images');
+      galleryImages.scrollTo({
+        left: galleryImages.clientWidth * this.currentIndex,
+        behavior: 'smooth'
+      });
+      
+      // Atualiza dots ativos
+      document.querySelectorAll('.gallery-dot').forEach((dot, index) => {
+        dot.classList.toggle('active', index === this.currentIndex);
+      });
+    }
+  };
+
+  gallery.init();
+});
