@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // 1. Detecta o idioma pela URL (pt, esp, eng)
+    // LOGICA IDIOMAS
     const lang = window.location.pathname.split('/')[1] || 'pt';
     
     // 2. Carrega templates
@@ -62,6 +62,8 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(setupLanguageSwitcher, 500);
   });
 
+    // LOGICA GALERIA
+
   document.addEventListener('DOMContentLoaded', function() {
   const gallery = {
     images: [
@@ -78,10 +80,13 @@ document.addEventListener('DOMContentLoaded', function() {
       '../assets/imagens/galeria-principal/galeria-11.jpg'
     ],
     currentIndex: 0,
+    autoScrollInterval: null,
+    autoScrollDelay: 4000, // 4 segundos
     init: function() {
       this.renderImages();
       this.renderDots();
       this.setupEventListeners();
+      this.startAutoScroll();
     },
     renderImages: function() {
       const container = document.querySelector('.gallery-images');
@@ -99,15 +104,18 @@ document.addEventListener('DOMContentLoaded', function() {
       // Botões de navegação
       document.querySelector('.gallery-prev').addEventListener('click', () => {
         this.navigate(-1);
+        this.resetAutoScroll();
       });
       document.querySelector('.gallery-next').addEventListener('click', () => {
         this.navigate(1);
+        this.resetAutoScroll();
       });
       
       // Pontos de navegação
       document.querySelectorAll('.gallery-dot').forEach(dot => {
         dot.addEventListener('click', () => {
           this.goTo(parseInt(dot.dataset.index));
+          this.resetAutoScroll();
         });
       });
     },
@@ -130,6 +138,22 @@ document.addEventListener('DOMContentLoaded', function() {
       document.querySelectorAll('.gallery-dot').forEach((dot, index) => {
         dot.classList.toggle('active', index === this.currentIndex);
       });
+    },
+    startAutoScroll: function() {
+      this.stopAutoScroll(); // Garante que não haja múltiplos intervalos
+      this.autoScrollInterval = setInterval(() => {
+        this.navigate(1);
+      }, this.autoScrollDelay);
+    },
+    stopAutoScroll: function() {
+      if (this.autoScrollInterval) {
+        clearInterval(this.autoScrollInterval);
+        this.autoScrollInterval = null;
+      }
+    },
+    resetAutoScroll: function() {
+      this.stopAutoScroll();
+      this.startAutoScroll();
     }
   };
 
